@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ClipForge Studio — Long videos, forged into clips</title>
+<meta name="description" content="ClipForge Studio finds the best moments in your videos, cuts them vertical, captions every word and adds sound. On your own device. Windows, Mac, Linux, Android.">
+<meta name="theme-color" content="#1c2724">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=Instrument+Serif:ital@1&family=Anton&family=Bangers&family=Noto+Sans+Devanagari:wght@500&family=Noto+Sans+Arabic:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="intro" id="intro"><img src="assets/logo.png" alt=""></div>
+<div class="bar" id="bar"></div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top"><img src="assets/logo.png" alt="ClipForge"><span>ClipForge</span></a>
+  <nav><a href="#story">How it works</a><a href="#bento">Features</a><a href="#download">Download</a></nav>
+  <a class="cta-s" href="#download" data-hero-dl>Get started <svg viewBox="0 0 24 24" width="14" height="14"><path d="M13 2 4 14h6l-1 8 9-12h-6z" fill="currentColor"/></svg></a>
+</header>
+
+<main id="top">
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="fog"></div><div class="floor"><i></i></div>
+  <h1 class="hero-title" aria-label="Clip Forge">
+    <span class="w" style="--i:0">Clip</span>
+    <img class="mark" src="assets/logo.png" alt="">
+    <span class="w" style="--i:1">Forge</span>
+  </h1>
+  <div class="hero-grid">
+    <div class="col col-l">
+      <div class="spec">
+        <small>FOR WINDOWS · MAC · LINUX · ANDROID</small>
+        <p>Long video in.<br>Captioned shorts out.</p>
+        <a href="#download" class="ul">TAKE IT FREE</a>
+      </div>
+      <span class="tag tl-tag">AI SOUND</span>
+    </div>
+    <div class="hero-phone">
+      <div class="phone" id="phone"><i class="notch"></i>
+        <div class="screen">
+          <video id="demo" muted loop playsinline autoplay preload="metadata" poster="assets/preview-poster.jpg"><source src="assets/preview.mp4" type="video/mp4"></video>
+          <div class="stage" id="heroStage" data-style="hormozi"><div class="sbg"></div><div class="big"></div><svg class="person" viewBox="0 0 200 260"><use href="#ppl"/></svg><div class="words"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="col col-r">
+      <p class="claim">Have clips ready<br>for every platform<br>with <em>one drop.</em></p>
+      <span class="tag tr-tag">BEHIND THE PERSON</span>
+    </div>
+  </div>
+  <div class="peek">
+    <div class="pk a"><b>52</b><span>sound effects, chosen by AI</span></div>
+    <div class="pk b"><b>15</b><span>AI providers, free ones included</span></div>
+    <div class="pk c"><b>0</b><span>bytes uploaded. It all runs on your device</span></div>
+  </div>
+</section>
+
+<!-- ============ MANIFESTO (scroll-lit words) ============ -->
+<section class="paper manifesto">
+  <p class="lit" id="lit">Every long video hides a dozen clips worth posting. ClipForge reads the talk, finds those moments, cuts them to vertical, captions each word as it is spoken, and lays in the sound. <em>You press one button.</em></p>
+</section>
+
+<!-- ============ PINNED STORY ============ -->
+<section class="story paper" id="story" data-step="0">
+  <div class="pin">
+    <div class="story-l">
+      <small class="eyebrow">HOW IT WORKS</small>
+      <ol class="steps" id="steps">
+        <li class="on"><span>01</span><div><h3>It finds the moments</h3><p>The AI reads the whole transcript and keeps only what starts and ends on a finished thought.</p></div></li>
+        <li><span>02</span><div><h3>It captions every word</h3><p>Dozens of animated styles, in many languages, Hinglish included.</p></div></li>
+        <li><span>03</span><div><h3>It puts the word behind you</h3><p>The key word sits between you and the background. Big and unmissable.</p></div></li>
+        <li><span>04</span><div><h3>It adds the sound</h3><p>Swooshes, hits and chimes land on the right word. The AI picks what fits.</p></div></li>
+      </ol>
+    </div>
+    <div class="story-r">
+      <div class="phone big-phone"><i class="notch"></i>
+        <div class="screen">
+          <div class="scene s1"><div class="frame"></div>
+            <div class="found"><i></i>Moment found · 00:42–01:08</div>
+            <div class="tl"><b style="--l:6%;--w:12%"></b><b style="--l:30%;--w:20%" class="hot"></b><b style="--l:62%;--w:9%"></b><b style="--l:80%;--w:14%" class="hot"></b><u></u></div>
+          </div>
+          <div class="scene s2"><div class="stage" id="capStage" data-style="hormozi"><div class="sbg"></div><div class="words"></div></div><div class="pills" id="capPills"></div></div>
+          <div class="scene s3"><div class="stage" id="behStage" data-style="behind"><div class="sbg"></div><div class="big"></div><svg class="person" viewBox="0 0 200 260"><use href="#ppl"/></svg><div class="words"></div></div></div>
+          <div class="scene s4"><div class="frame dim"></div><div class="wave" id="wave"></div><div class="sfx"><span>whoosh</span><span>hit</span><span>pop</span><span>chime</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENTO ============ -->
+<section class="paper bento-sec" id="bento">
+  <h2 class="rv">Small things, <em>done properly.</em></h2>
+  <div class="bento">
+    <article class="bx lang rv"><small>LANGUAGES</small><div class="hello" id="hello">Hello</div><p>Captions and translation in many languages. Urdu and Hindi can be written in English letters.</p></article>
+    <article class="bx dark rv" style="--d:.1s"><small>PRIVATE</small><h3>Your video never leaves your device.</h3><p>Speech is transcribed locally. No account needed.</p></article>
+    <article class="bx follow rv" style="--d:.15s"><small>PODCASTS</small><h3>Follows whoever talks.</h3><div class="two"><i></i><i class="on"></i></div></article>
+    <article class="bx num rv" style="--d:.2s"><b data-n="84">0</b><span>caption styles, each with its own movement</span></article>
+    <article class="bx prov rv" style="--d:.1s"><small>BRING ANY AI</small><div class="chips"><span>Gemini</span><span>OpenRouter</span><span>Groq</span><span>Cerebras</span><span>Mistral</span><span>NVIDIA</span><span>Claude</span><span>GPT</span><span>DeepSeek</span><span>+ more</span></div></article>
+    <article class="bx lime rv" style="--d:.2s"><small>FREE TO START</small><h3>No watermark. No sign-up.</h3></article>
+  </div>
+</section>
+
+<!-- ============ DOWNLOAD ============ -->
+<section class="dark dl" id="download">
+  <div class="beam"></div>
+  <small class="eyebrow">DOWNLOAD</small>
+  <h2 class="rv">Forge your <em>first clip</em> today.</h2>
+  <div class="count rv"><div class="odo" id="odo" aria-label="downloads"></div><span>downloads<small id="split"></small></span></div>
+  <div class="dl-grid" id="dlGrid">
+    <a class="dl-card" data-os="windows" data-dl href="#"><svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M3 5.5 10.5 4.4v7H3zM11.5 4.3 21 3v8.4h-9.500zM3 12.6h7.500v7L3 18.500zM11.500 12.600H21V21l-9.500-1.400z"/></svg><b>Windows</b><small>10 and 11 · 64-bit</small><em>YOUR DEVICE</em></a>
+    <a class="dl-card" data-os="mac-arm" data-dl href="#"><svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M16.4 12.6c0-2.3 1.9-3.400 2-3.500-1.100-1.600-2.800-1.800-3.400-1.800-1.400-.1-2.800.9-3.500.9-.7 0-1.800-.8-3-.8-1.500 0-3 .9-3.800 2.300-1.600 2.800-.4 7 1.200 9.300.8 1.100 1.700 2.400 2.900 2.300 1.200 0 1.600-.7 3-.7s1.800.7 3 .7c1.300 0 2.100-1.100 2.800-2.300.9-1.300 1.300-2.500 1.300-2.600 0 0-2.500-1-2.500-3.800zM14.100 5.800c.6-.8 1.100-1.800.9-2.800-.9 0-2 .6-2.600 1.400-.6.700-1.100 1.700-.9 2.700 1 .1 2-.5 2.600-1.300z"/></svg><b>Mac</b><small>Apple Silicon · M1–M4</small><em>YOUR DEVICE</em></a>
+    <a class="dl-card" data-os="mac-intel" data-dl href="#"><svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M16.4 12.6c0-2.3 1.9-3.400 2-3.500-1.100-1.600-2.800-1.800-3.400-1.800-1.400-.1-2.800.9-3.500.9-.7 0-1.800-.8-3-.8-1.500 0-3 .9-3.800 2.300-1.600 2.800-.4 7 1.200 9.300.8 1.100 1.700 2.400 2.900 2.300 1.200 0 1.600-.7 3-.7s1.800.7 3 .7c1.300 0 2.100-1.100 2.800-2.300.9-1.300 1.300-2.500 1.300-2.600 0 0-2.500-1-2.500-3.800zM14.100 5.800c.6-.8 1.100-1.800.9-2.800-.9 0-2 .6-2.600 1.400-.6.700-1.100 1.700-.9 2.700 1 .1 2-.5 2.600-1.300z"/></svg><b>Mac</b><small>Intel processor</small><em>YOUR DEVICE</em></a>
+    <a class="dl-card" data-os="linux" data-dl href="#"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c-2.500 0-3.500 2-3.500 4.500 0 2-2 3.500-2.500 6-.5 2.500.5 4 2 5l-1.500 2h11L16 18.500c1.500-1 2.500-2.500 2-5-.5-2.500-2.500-4-2.500-6C15.500 5 14.500 3 12 3z"/><circle cx="10.500" cy="8" r=".6" fill="currentColor"/><circle cx="13.500" cy="8" r=".6" fill="currentColor"/></svg><b>Linux</b><small>AppImage · 64-bit</small><em>YOUR DEVICE</em></a>
+    <a class="dl-card" data-os="android" data-dl href="#"><svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M6 9h12v9a1.500 1.500 0 0 1-1.500 1.500H15V22h-2v-2.500h-2V22H9v-2.500H7.500A1.500 1.500 0 0 1 6 18zM4 9.500a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zm14 0a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zM15.500 3.400l1.100-1.700-.5-.3-1.200 1.800A6 6 0 0 0 12 2.600c-.9 0-1.800.2-2.500.6L8.400 1.400l-.5.300L9 3.400A5.500 5.500 0 0 0 6 8h12a5.500 5.500 0 0 0-2.500-4.600zM9.500 6.500a.6.6 0 1 1 0-1.200.6.6 0 0 1 0 1.200zm5 0a.6.6 0 1 1 0-1.200.6.6 0 0 1 0 1.200z"/></svg><b>Android</b><small>Android 10 or newer · APK</small><em>YOUR DEVICE</em></a>
+  </div>
+  <p class="detected" id="detected"></p>
+  <p class="alt"><a id="portable" href="#" data-dl>Windows portable version, no install</a></p>
+</section>
+</main>
+
+<footer>
+  <a class="brand" href="#top"><img src="assets/logo.png" alt=""><span>ClipForge Studio</span></a>
+  <a class="insta" href="https://www.instagram.com/taha.ai.editor" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.500" cy="6.500" r="1" fill="currentColor"/></svg>taha.ai</a>
+  <span class="copy">© <span id="yr"></span> ClipForge Studio</span>
+</footer>
+
+<svg width="0" height="0" style="position:absolute"><defs>
+  <linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#40524a"/><stop offset="1" stop-color="#141c18"/></linearGradient>
+  <symbol id="ppl" viewBox="0 0 200 260"><path d="M100 14c-25 0-42 20-42 48 0 20 8 34 18 43-30 8-60 22-66 58l-4 97h188l-4-97c-6-36-36-50-66-58 10-9 18-23 18-43 0-28-17-48-42-48z" fill="url(#sg)" stroke="#d9ffc7" stroke-opacity=".28" stroke-width="1.4"/></symbol>
+</defs></svg>
+<script src="app.js"></script>
+</body>
+</html>
