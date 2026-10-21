@@ -93,15 +93,21 @@ em{font-family:var(--serif);font-style:italic;font-weight:400}
 .lit em{color:#4b6b3a}
 
 /* pinned story */
-.story{height:480vh;position:relative}
-.pin{position:sticky;top:0;height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4vw;padding:0 8vw;background:radial-gradient(60% 60% at 75% 50%,#e3ebe0,var(--paper))}
+.story{position:relative;padding:14vh 0 12vh}
+.pin{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4vw;padding:0 8vw}
+.story::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 55% at 75% 50%,#e3ebe0,transparent);pointer-events:none}
 .eyebrow{display:block;font-size:12px;letter-spacing:.2em;color:#6f7f75;margin-bottom:26px}
 .steps{list-style:none}
-.steps li{display:flex;gap:22px;padding:22px 0;border-top:1px solid #cfd6cc;opacity:.32;transition:.5s}
+.steps li{position:relative;display:flex;gap:22px;padding:22px 0;border-top:1px solid #cfd6cc;opacity:.38;transition:opacity .5s;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.steps li:hover{opacity:.75}
+.steps li::after{content:"";position:absolute;left:0;top:-1px;height:2px;width:100%;background:#4b8a2e;transform:scaleX(0);transform-origin:0 50%}
+.steps li.on::after{animation:prog var(--dur,5s) linear forwards}
+.story.paused .steps li.on::after{animation-play-state:paused}
+@keyframes prog{to{transform:scaleX(1)}}
 .steps li span{font-size:14px;color:#7a8a80;padding-top:7px;transition:.4s}
 .steps h3{font-weight:400;font-size:clamp(24px,2.7vw,38px);letter-spacing:-.02em;line-height:1.1}
 .steps p{font-size:16px;color:#52625a;max-height:0;overflow:hidden;opacity:0;transition:.5s;max-width:420px}
-.steps li.on{opacity:1}.steps li.on span{color:#4b8a2e}.steps li.on p{max-height:120px;opacity:1;margin-top:10px}
+.steps li.on{opacity:1}.steps li:focus-visible{outline:2px solid #4b8a2e;outline-offset:4px}.steps li.on span{color:#4b8a2e}.steps li.on p{max-height:120px;opacity:1;margin-top:10px}
 .story-r{display:grid;place-items:center}
 .big-phone{width:min(300px,64vw,calc(72vh*.47))}
 .scene{position:absolute;inset:0;opacity:0;transform:scale(1.06);transition:.6s;pointer-events:none}
@@ -190,9 +196,9 @@ footer{background:#121a17;color:#c5d1c9;display:flex;justify-content:space-betwe
   .tr-tag{display:none}
   .peek{grid-template-columns:1fr;margin-top:30px}
   .pk{padding:22px 26px}.pk.a,.pk.b,.pk.c{clip-path:none;border-radius:24px 24px 0 0;padding-left:26px;min-height:0}
-  .pin{grid-template-columns:1fr;grid-template-rows:auto 1fr;padding:96px 6vw 0;gap:0;align-items:start}
-  .story-r{order:-1}.big-phone{width:min(190px,40vh*.47*1.6)}
-  .steps li{padding:12px 0}.steps h3{font-size:22px}.steps li.on p{max-height:100px}.eyebrow{display:none}
+  .story{padding:10vh 0 8vh}.pin{grid-template-columns:1fr;gap:34px;padding:0 6vw}
+  .story-r{order:-1}.big-phone{width:min(230px,62vw)}
+  .steps li{padding:14px 0}.steps h3{font-size:22px}.steps li.on p{max-height:120px}.eyebrow{display:none}
   .bento{grid-template-columns:1fr}.bx.lang,.bx.dark,.bx.follow,.bx.num,.bx.prov,.bx.lime{grid-column:auto;grid-row:auto;min-height:200px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}.rv,.hero-phone,.col,.peek,.hero-title .w,.mark{opacity:1;transform:none;filter:none}}
@@ -202,3 +208,15 @@ footer{background:#121a17;color:#c5d1c9;display:flex;justify-content:space-betwe
 
 .hero-phone::after{content:"";position:absolute;left:-60%;right:-60%;bottom:-70px;height:150px;background:radial-gradient(50% 50% at 50% 50%,rgba(var(--glow),.55),rgba(var(--glow),.12) 55%,transparent 72%);z-index:-1;pointer-events:none}
 .hero .phone{box-shadow:0 0 0 1.5px rgba(213,255,106,.55),0 30px 60px rgba(0,0,0,.45),0 0 60px rgba(var(--glow),.3)}
+
+/* skip rendering of off-screen sections until needed */
+.bento-sec,.dl,.manifesto,footer{content-visibility:auto;contain-intrinsic-size:auto 900px}
+/* touch phones: lighter effects */
+@media(hover:none),(max-width:900px){
+  .fog{animation:none;will-change:auto}.tag{animation:none}.lay{will-change:auto}
+  .hero-title .w{filter:none}
+  .hero .phone,.phone{box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 0 1.5px rgba(213,255,106,.45)}
+  .hero-phone::after{opacity:.8}
+  .dl-card.me::before{animation:none;opacity:.7}.beam{animation:none}
+  .mark{animation:none!important}
+}

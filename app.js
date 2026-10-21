@@ -73,7 +73,7 @@
     tick = false;
     nav.classList.toggle('solid', scrollY > hs.offsetHeight - 120);
     bar.style.transform = `scaleX(${scrollY / Math.max(1, document.body.scrollHeight - innerHeight)})`;
-    lit(); story();
+    lit();
   }
   function onScroll() { if (!tick) { tick = true; requestAnimationFrame(frame); } }
   $('#yr').textContent = new Date().getFullYear();
@@ -98,12 +98,19 @@
     const k = Math.floor(p * parts.length); if (k === litK) return; litK = k; parts.forEach((s, i) => s.classList.toggle('on', i < k));
   }
 
-  // ---- pinned story ----
-  const st = $('#story'), stSteps = $$('#steps li'); let cur = -1;
-  function story() {
-    const r = st.getBoundingClientRect(), p = clamp(-r.top / (r.height - innerHeight), 0, .999), i = Math.floor(p * 4);
-    if (i !== cur) { cur = i; st.dataset.step = i; stSteps.forEach((l, j) => l.classList.toggle('on', j === i)); }
+  // ---- story: auto-advances on a timer, click any step to jump ----
+  const st = $('#story'), stSteps = $$('#steps li'), DUR = 5500; let cur = 0, stTimer, stVis = false;
+  st.style.setProperty('--dur', DUR + 'ms');
+  function setStep(i) {
+    cur = (i + stSteps.length) % stSteps.length; st.dataset.step = cur;
+    stSteps.forEach((l, j) => { l.classList.remove('on'); l.setAttribute('aria-selected', j === cur); });
+    void st.offsetWidth; stSteps[cur].classList.add('on');            // restarts the progress bar
+    clearTimeout(stTimer); if (stVis) stTimer = setTimeout(() => setStep(cur + 1), DUR);
   }
+  stSteps.forEach((l, i) => { l.addEventListener('click', () => setStep(i)); l.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setStep(i); } }); });
+  new IntersectionObserver(es => { stVis = es[0].isIntersecting; st.classList.toggle('paused', !stVis); if (stVis) setStep(cur); else clearTimeout(stTimer); }, { threshold: .35 }).observe(st);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) { clearTimeout(stTimer); st.classList.add('paused'); } else if (stVis) { st.classList.remove('paused'); setStep(cur); } });
+  setStep(0);
   addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); onScroll();
 
   // ---- caption stage runner ----
@@ -144,7 +151,7 @@
   const lays = $$('.lay'); let mx = 0, my = 0, pt = false;
   function par() { pt = false; const sy = scrollY; lays.forEach(l => { const d = +l.dataset.d; l.style.transform = `translate3d(${(-mx * 34 * d).toFixed(1)}px,${(sy * d * .18 - my * 8 * d).toFixed(1)}px,0)`; }); }
   const reqPar = () => { if (!pt && heroIn) { pt = true; requestAnimationFrame(par); } };
-  addEventListener('scroll', reqPar, { passive: true });
+  if (matchMedia('(hover:hover)').matches) addEventListener('scroll', reqPar, { passive: true });
   if (matchMedia('(hover:hover)').matches && !reduce) addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; reqPar(); }, { passive: true });
 
   // ---- phone tilt (desktop) ----
