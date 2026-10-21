@@ -140,6 +140,13 @@
   setInterval(() => { hello.classList.add('out'); setTimeout(() => { hi = (hi + 1) % HI.length; hello.textContent = HI[hi]; hello.dir = /[؀-ۿ]/.test(HI[hi]) ? 'rtl' : 'ltr'; hello.classList.remove('out'); }, 400); }, 2200);
   const two = $$('.two i'); let tw = 0; setInterval(() => { tw ^= 1; two.forEach((e, i) => e.classList.toggle('on', i === tw)); }, 1800);
 
+  // ---- terrain parallax (cheap: transforms only, hero only) ----
+  const lays = $$('.lay'); let mx = 0, my = 0, pt = false;
+  function par() { pt = false; const sy = scrollY; lays.forEach(l => { const d = +l.dataset.d; l.style.transform = `translate3d(${(-mx * 34 * d).toFixed(1)}px,${(sy * d * .18 - my * 8 * d).toFixed(1)}px,0)`; }); }
+  const reqPar = () => { if (!pt && heroIn) { pt = true; requestAnimationFrame(par); } };
+  addEventListener('scroll', reqPar, { passive: true });
+  if (matchMedia('(hover:hover)').matches && !reduce) addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; reqPar(); }, { passive: true });
+
   // ---- phone tilt (desktop) ----
   const ph = $('#phone');
   let tx = 0, ty = 0, tt = false;
